@@ -9,8 +9,8 @@ all			:	test
 test 		: test.o Skiplist.o gtest_main.a
 	$(CC) $(CXXFLAG) $^ -o $@
 
-Skiplist.o 	: Skiplist.cpp
-	$(CC) $^ -o $@ $(CXXFLAG) -c
+Skiplist.o 	: Skiplist.cpp Skiplist.h
+	$(CC) $< -o $@ $(CXXFLAG) -c
 
 test.o 		: test.cpp
 	$(CC) $^ -o $@ $(CXXFLAG) -c
