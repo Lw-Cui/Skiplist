@@ -1,9 +1,11 @@
 #include "Skiplist.h"
 #include "gtest/gtest.h"
-const int LEN = 100000;
+#include <algorithm>
+using namespace std;
 
 class SkiplistTest: public ::testing::Test {
 protected:
+	static const int LEN = 100000;
 	Skiplist p;
 	int data[LEN];
 	int end;
@@ -11,12 +13,12 @@ protected:
 
 TEST_F(SkiplistTest, insertAndFind) {
 	srand(time(NULL));
-	for (int i = 0; i < LEN; i++)
-		data[i] = rand();
-	std::sort(data, data + LEN);
-	end = std::unique(data, data + LEN) - data;
-	for (int i = 0; i < end; i++)
-		ASSERT_TRUE(p.insert(data[i]) && p.find(data[i]));
+	for (auto &value: data)
+		value = rand();
+	sort(data, data + LEN);
+	end = unique(data, data + LEN) - data;
+	for (auto value: data)
+		ASSERT_TRUE(p.insert(value) && p.find(value));
 }
 
 TEST_F(SkiplistTest, delAndFind) {

@@ -1,13 +1,8 @@
 #ifndef _SKIPLIST_H_
 #define _SKIPLIST_H_
-#include <stdio.h>
-#include <algorithm>
-#include <time.h>
-#include <stdlib.h>
-#include <string.h>
-#include <assert.h>
-const int MAX = 0x7FFFFFFF;
-const int MAX_LEVEL = 10;
+#include <ctime>
+#include <cstdlib>
+#include <cstring>
 
 class Skiplist {
 	struct Node {
@@ -33,6 +28,8 @@ private:
 	// Return the level of inserted elements. 
 	int get_level();
 	Node *root, *end;
+	static const int MAX = 0x7FFFFFFF;
+	static const int MAX_LEVEL = 10;
 };
 
 #endif
