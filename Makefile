@@ -4,8 +4,6 @@ CXXFLAG 	= -O0 -Wall -Wextra -g -std=c++14 -pthread -I.
 GTEST_HEADER= gtest/*.h gtest/internal/*.h
 GTEST_SRC 	= gsrc/*.cc gsrc/*.h $(GTEST_HEADER)
 
-all			:	test
-
 test 		: test.o Skiplist.o gtest_main.a
 	$(CC) $(CXXFLAG) $^ -o $@
 
@@ -27,6 +25,6 @@ gtest_main.o: $(GTEST_SRC)
 clean		:
 	rm -f test.o test Skiplist.o
 
-rebuild		:	clean all
+rebuild		:	clean test
 
-.PHONY		:	all clean rebuild
+.PHONY		:	clean rebuild
