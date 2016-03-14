@@ -2,8 +2,6 @@
 
 Skiplist::Node::Node(int d, int l)
 :data(d), array(l) {
-	for (auto &ptr: array)
-		ptr = NULL;
 }
 
 Skiplist::Node::~Node() {
