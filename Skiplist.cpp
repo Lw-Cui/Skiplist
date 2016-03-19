@@ -1,4 +1,10 @@
 #include "Skiplist.h"
+#include "interface.h"
+
+std::shared_ptr<Baselist> Baselist::make_Skiplist() {
+	return std::shared_ptr<Baselist>(new Skiplist());
+	//return std::make_shared<Baselist>(new Skiplist());
+}
 
 Skiplist::Node::Node(int d, int l)
 :data(d), array(l) {

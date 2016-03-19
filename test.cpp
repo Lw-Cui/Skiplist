@@ -1,4 +1,4 @@
-#include "Skiplist.h"
+#include "interface.h"
 #include "gtest/gtest.h"
 #include <algorithm>
 #include <iostream>
@@ -6,6 +6,7 @@ using namespace std;
 
 class SkiplistTest: public ::testing::Test {
 protected:
+	SkiplistTest():p(Baselist::make_Skiplist()) {}
 	virtual void SetUp() {
 		srand(time(NULL));
 		for (auto &value: data)
@@ -15,22 +16,22 @@ protected:
 	}
 
 	static const int LEN = 10000;
-	Skiplist p;
+	shared_ptr<Baselist> p;
 	int data[LEN];
 	int end;
 };
 
 TEST_F(SkiplistTest, insertAndFind) {
 	for (int i = 0; i < end; i++) {
-		ASSERT_TRUE(p.insert(data[i]));
-		ASSERT_TRUE(p.find(data[i]));
+		ASSERT_TRUE(p->insert(data[i]));
+		ASSERT_TRUE(p->find(data[i]));
 	}
 }
 
 TEST_F(SkiplistTest, delAndFind) {
 	for (int i = 0; i < end; i++) {
-		ASSERT_TRUE(p.insert(data[i]));
-		ASSERT_TRUE(p.del(data[i]));
-		ASSERT_TRUE(!p.find(data[i]));
+		ASSERT_TRUE(p->insert(data[i]));
+		ASSERT_TRUE(p->del(data[i]));
+		ASSERT_TRUE(!p->find(data[i]));
 	}
 }
