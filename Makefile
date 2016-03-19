@@ -7,11 +7,11 @@ GTEST_SRC 	= gsrc/*.cc gsrc/*.h $(GTEST_HEADER)
 test 		: test.o Skiplist.o gtest_main.a
 	$(CC) $(CXXFLAG) $^ -o $@
 
-Skiplist.o 	: Skiplist.cpp Skiplist.h
+Skiplist.o 	: Skiplist.cpp Skiplist.h interface.h
 	$(CC) $< -o $@ $(CXXFLAG) -c
 
-test.o 		: test.cpp
-	$(CC) $^ -o $@ $(CXXFLAG) -c
+test.o 		: test.cpp interface.h
+	$(CC) $< -o $@ $(CXXFLAG) -c
 
 gtest_main.a: gtest-all.o gtest_main.o
 	$(AR) $(ARFLAGS) $@ $^
