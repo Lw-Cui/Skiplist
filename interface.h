@@ -4,7 +4,7 @@
 
 struct Baselist {
 	virtual ~Baselist(){};
-	virtual bool find(int k) = 0;
+	virtual bool find(int k) const = 0;
 	virtual bool del(int k) = 0;
 	virtual bool insert(int k) = 0;
 	static std::shared_ptr<Baselist> make_Skiplist();

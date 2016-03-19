@@ -76,7 +76,7 @@ bool Skiplist::insert(int k) {
 	}
 }
 
-std::shared_ptr<Skiplist::Node> Skiplist::find_pos(int k) {
+std::shared_ptr<Skiplist::Node> Skiplist::find_pos(int k) const{
 	int level = root->array.size() - 1;
 	std::shared_ptr<Node> p(root);
 	while (true) {
@@ -102,7 +102,7 @@ void Skiplist::increase_root_level() {
 }
 
 // Return the level of inserted elements. 
-int Skiplist::get_level() {
+int Skiplist::get_level() const {
 	int cnt = 1;
 	/* The max level of elements shouldn't larger
 	 than root->level + 1 before updating it */

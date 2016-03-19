@@ -18,16 +18,16 @@ class Skiplist: public Baselist{
 public:
 	Skiplist();
 	virtual ~Skiplist();
-	inline bool find(int k) override {
+	inline bool find(int k) const override {
 		return find_pos(k)->data == k;
 	}
 	bool del(int k) override;
 	bool insert(int k) override;
 private:
-	std::shared_ptr<Node> find_pos(int k);
+	std::shared_ptr<Node> find_pos(int k) const;
 	void increase_root_level();
 	// Return the level of inserted elements. 
-	int get_level();
+	int get_level() const;
 	std::shared_ptr<Node> root, end;
 	static const int MAX = 0x7FFFFFFF;
 	static const int MAX_LEVEL = 10;
